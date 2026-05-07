@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>喵喵</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        @keyframes breathe {
+            0%   { background-color: #121212; }
+            50%  { background-color: #1a1a2e; } /* 稍微帶點深藍的黑 */
+            100% { background-color: #121212; }
+        }
+        body {
+            background-color: #121212;
+            animation: breathe 5s ease infinite; /* 簡寫法：名稱 5秒 平滑 無限次 */
+            font-family: "Microsoft JhengHei", sans-serif;
+            /* 讓 Body 成為一個充滿全螢幕的黑色基地 */
+            height: 100dvh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 關鍵：讓兩個主要區塊都具備置中能力 */
+        #initLoading {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* 讓內部的絕對定位以這為基準 */
+        }        
+        #displayImage {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* 讓內部的絕對定位以這為基準 */
+            opacity: 0;             /* 初始隱身 */
+            transition: opacity 1.5s ease-in-out; /* 透明度變化時，花1.5秒平滑過渡 */
+        }
+        #loading_gif {
+            width: 100px;
+            mix-blend-mode: screen; /* 讓 GIF 的亮部與背景融合，暗部保持黑色 */
+        }
+        /* 讓標題「浮動」，不影響圖片的垂直中心點 */
+        h1 {
+            color: #00BBDD;
+            position: absolute; 
+            bottom: 100%; /* 把標題推到中心點（圖片）的上方 */
+            margin-bottom: 20px; /* 與圖片的間距 */
+            white-space: nowrap; /* 防止標題換行 */
+        }
+
+        .main_image {
+            border-radius: 20px;
+            box-shadow: 10px 8px 10px rgba(255, 255, 255, 0.2);
+            /* 這裡不用設定 display: block，因為 Flex 會處理它 */
+        }
+
+        #loading_gif {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="initLoading"> 
+        <h1>喵喵</h1>
+        <img id="loading_gif" src="images/loading.gif" alt="加載中">
+    </div>
+
+    <div id="displayImage" style="display: none;"> 
+        <h1>總之就是<strong>喵喵</strong></h1>
+        <img src="images/An.png" alt="杏醬賽高" width="500" class="main_image">
+    </div>
+
+    <script>
+        setTimeout(function() {
+            var init = document.getElementById('initLoading');
+            var display = document.getElementById('displayImage');
+
+            // 隱藏初始畫面
+            init.style.display = 'none';
+
+            // 顯示正式圖片（因為 CSS 裡設定了 flex，這裡要給 flex 才能維持置中）
+            display.style.display = 'flex'; 
+            setTimeout(function() {
+                display.style.opacity = '1';
+            }, 50);
+        }, 3000); 
+    </script>
+</body>
+</html>
