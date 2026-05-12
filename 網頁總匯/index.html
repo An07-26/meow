@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>喵喵</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="scene-init" class="scene"> 
+        <h1 class="title">喵喵</h1>
+
+        <div id="contentArea"> 
+            <img class="Loading_gif" src="images/loading.gif" alt="加載中" >
+        </div>
+    </div>
+
+    <div id="scene-gallery" class="scene" style="display: none;"> 
+        <h1>總之就是<strong>喵喵</strong></h1>
+        <div class="image-viewer">
+            <button class="nav-btn prev-btn">&lt;</button> 
+            <img class="main_image" src="images/An1.png" alt="杏醬賽高">
+            <button class="nav-btn next-btn">&gt;</button> 
+        </div>
+    </div>
+
+    <!-- TEST_EMPTY_SCENE: empty feature scene for future replacement -->
+    <div id="scene-empty" class="scene" style="display: none;">
+        <h1>總之就是<strong>另一個喵喵</strong></h1>
+
+    </div>
+
+    <nav class="menu" aria-label="功能選單" hidden>
+        <div class="menu-list menu-list-top">
+            <button class="menu-btn menu-item is-active" type="button" data-scene="gallery" aria-label="Gallery">
+                <div class="scanner"></div>
+                <span class="btn-text">c</span>
+            </button>
+        </div>
+
+        <button class="menu-btn menu-toggle" type="button" aria-label="Open menu">
+            <div class="scanner"></div>
+            <span class="btn-text">+</span>
+        </button>
+
+        <div class="menu-list menu-list-bottom">
+            <!-- TEST_EMPTY_SCENE: test menu button for the empty feature scene -->
+            <button class="menu-btn menu-item" type="button" data-scene="empty" aria-label="Empty test scene">
+                <div class="scanner"></div>
+                <span class="btn-text">t</span>
+            </button>
+        </div>
+    </nav>
+
+    <script src="main.js"></script>
+</body>
+</html>
